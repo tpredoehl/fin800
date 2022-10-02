@@ -15,7 +15,7 @@
 \subsection{What will be the optimal portfolio choice of the investor ?}
 At each time t, the agent makes two choices, namely (a) the amount of consumption during the period $c_t$ and (b) the share $\theta_t$ of its remaining wealth $(w_t - c_t)$ to be invested into the risky asset at the beginning of the period. Given that (a) the investable universe contains only two assets and (b) the marginal utility of consumption is strictly increasing ($u'>0$), wealth is fully invested or consumed, i.e. $(1-\theta_t)$ will be invested into the riskless asset. The resulting wealth at t+1 therefore is :
 \begin{align*}
-	w_t &= c_t + s_{it}\\
+	w_t &= c_t + s_{it} R_{it}\\
 	w_{t+1} &= (w_t - c_t)\left[(1-\theta_t)(1+r_f)+ \theta_t(1+r_{t+1}) \right]\\
 	&= (w_t - c_t)[(1-\theta_t)R_f + \theta_t R_{t+1}]\\
 	&= (w_t - c_t)[R_f-\theta_t R_f + \theta_t R_{t+1}]\\
