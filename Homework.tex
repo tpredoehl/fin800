@@ -85,7 +85,7 @@ Optimal wealth is obtained by inserting the optimal portfolio into the wealth fu
 	&= w_t R_f + \frac{(E[R_{t+1}] - R_f)^2}{a \sigma_r^2}\\
 	&= w_t R_f + \text{Sharpe}^2\\
 	V[w_{t+1}] &= E[(w_{t+1} - E[w_{t+1}])^2]\\
-	&= E[(w_t R_f + \phi (R_{t+1}-R_f) - E[w_{t+1}])^2]\\
+	&= E[(w_t R_f + \phi^* (R_{t+1}-R_f) - w_t R_f + \phi^* (E[R_{t+1}]-R_f))^2]\\
 \end{align*}
 
 \subsection{Compute the welfare of the investor.}
