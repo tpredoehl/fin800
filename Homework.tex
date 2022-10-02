@@ -23,7 +23,8 @@ An agent with initial wealth $w_t$ at time t invests a fraction of wealth $\frac
 
 The agent's utility function then is:
 \begin{align*}
-	u(w_{t+1}) &= -e^{-aw_{t+1} - bESG_t}
+	u(w_{t+1}) &= -e^{-aw_{t+1} - bESG_t}\\
+	&= -e^{-a(w_t R_f + \phi (R_{t+1} - R_f)) - bESG_t}\\
 \end{align*}
 
 
