@@ -23,9 +23,9 @@
 \subsection{What will be the optimal portfolio choice of the investor ?}
 At each time t, the agent makes two choices, namely (a) the amount of consumption during the period $c_t$ and (b) the share $\theta_t$ of its remaining wealth $(w_t - c_t)$ to be invested into the risky asset at the beginning of the period. Given that (a) the investable universe contains only two assets and (b) the marginal utility of consumption is strictly increasing ($u'>0$), wealth is fully invested or consumed, i.e. $(1-\theta_t)$ will be invested into the riskless asset. The resulting wealth at t+1 therefore is :
 \begin{align*}
-	w_{t+1} &= (w_t - c_t)\left[(1-\theta_t)(1+r_{f, t+1})+ \theta_t(1+r_{t+1}) \right]\\
+	w_{t+1} &= (w_t - c_t)\left[(1-\theta_t)(1+r_f)+ \theta_t(1+r_{t+1}) \right]\\
 	&= (w_t - c_t) \left[1 -\theta_t + r_{f,t+1} - \theta_t r_{f,t+1} + \theta_t + \theta_t r_{t+1}\right]\\
-	&= (w_t - c_t) \left[1 + r_{f,t+1} + \theta_t(r_{t+1}-r_{f, t+1}) \right]
+	&= (w_t - c_t) \left[1 + r_{f,t+1} + \theta_t(r_{t+1}-r_f) \right]
 \end{align*}
 
 
@@ -35,45 +35,45 @@ The optimal portfolio maximizes wealth over time given choices of $c_t$ and $\th
 \begin{align*}
 	J_t(W_t) &= \max_{(c, \theta)_{t=0}^T} E_t \left[\sum_{s=t}^{T} \delta^{s-t}u(c_s)\right]\\
 	&= \max_{(c_t, \theta_t)} \left[u(c_t) + \delta E_t\left[J_{t+1}(W_{t+1})\right]\right]\\
-	&= \max_{(c_t, \theta_t)} \left[u(c_t) + \delta E_t\left[J_{t+1}((w_t - c_t) \left[1 + r_{f,t+1} + \theta_t(r_{t+1}-r_{f, t+1}) \right])\right]\right]
+	&= \max_{(c_t, \theta_t)} \left[u(c_t) + \delta E_t\left[J_{t+1}((w_t - c_t) \left[1 + r_{f,t+1} + \theta_t(r_{t+1}-r_f) \right])\right]\right]
 \end{align*}
 
 \section{Annex 1}
 \begin{align*}
 	J_t(W_t) &= \max_{(c, \theta)_{t=0}^T} E_t \left[\sum_{s=t}^{T} \delta^{s-t}u(c_s)\right]\\
 	&= \max_{(c_t, \theta_t)} \left[u(c_t) + \delta E_t\left[J_{t+1}(W_{t+1})\right]\right]\\
-	&= \max_{(c_t, \theta_t)} \left[u(c_t) + \delta E_t\left[J_{t+1}((w_t - c_t) \left[1 + r_{f,t+1} + \theta_t(r_{t+1}-r_{f, t+1}) \right])\right]\right]
+	&= \max_{(c_t, \theta_t)} \left[u(c_t) + \delta E_t\left[J_{t+1}((w_t - c_t) \left[1 + r_{f,t+1} + \theta_t(r_{t+1}-r_f) \right])\right]\right]
 \end{align*}
 
 Given $u'>0$ and $u''<0$ by construction, FOC are sufficient to establish a maximum.
 
 \begin{align}
-	\frac{\partial J_t}{\partial c_t} = 0 &= \frac{\partial u}{\partial c_t} - \delta E_t \left[\left[1 + r_{f,t+1} + \theta_t(r_{t+1}-r_{f, t+1}) \right]\frac{\partial J_{t+1}}{\partial w_{t+1}}\right]\\
-	\frac{\partial J_t}{\partial \theta_t} = 0 &= E_t \left[(r_{t+1}-r_{f, t+1}) \frac{\partial J_{t+1}}{\partial w_{t+1}} \right]
+	\frac{\partial J_t}{\partial c_t} = 0 &= \frac{\partial u}{\partial c_t} - \delta E_t \left[\left[1 + r_{f,t+1} + \theta_t(r_{t+1}-r_f) \right]\frac{\partial J_{t+1}}{\partial w_{t+1}}\right]\\
+	\frac{\partial J_t}{\partial \theta_t} = 0 &= E_t \left[(r_{t+1}-r_f) \frac{\partial J_{t+1}}{\partial w_{t+1}} \right]
 \end{align}
 
 Using (2), (1) is simplified as the Euler Equation
 \begin{align*}
-	0 &= \frac{\partial u}{\partial c_t} - \delta E_t \left[\left[1 + r_{f,t+1} + \theta_t(r_{t+1}-r_{f, t+1}) \right]\frac{\partial J_{t+1}}{\partial w_{t+1}}\right]\\
-	&= \frac{\partial u}{\partial c_t} - \delta E_t \left[(1 + r_{f,t+1}) \frac{\partial J_{t+1}}{\partial w_{t+1}} + \theta_t(r_{t+1}-r_{f, t+1}) \frac{\partial J_{t+1}}{\partial w_{t+1}}\right] \\
-	&= \frac{\partial u}{\partial c_t} - \delta E_t \left[(1 + r_{f,t+1})\frac{\partial J_{t+1}}{\partial w_{t+1}} \right] - \delta E_t \left[ \theta_t(r_{t+1}-r_{f, t+1}) \frac{\partial J_{t+1}}{\partial w_{t+1}}\right] \\
-	&= \frac{\partial u}{\partial c_t} - \delta E_t \left[(1 + r_{f,t+1})\frac{\partial J_{t+1}}{\partial w_{t+1}} \right] - \delta \theta_t E_t \left[(r_{t+1}-r_{f, t+1}) \frac{\partial J_{t+1}}{\partial w_{t+1}}\right] \\
+	0 &= \frac{\partial u}{\partial c_t} - \delta E_t \left[\left[1 + r_{f,t+1} + \theta_t(r_{t+1}-r_f) \right]\frac{\partial J_{t+1}}{\partial w_{t+1}}\right]\\
+	&= \frac{\partial u}{\partial c_t} - \delta E_t \left[(1 + r_{f,t+1}) \frac{\partial J_{t+1}}{\partial w_{t+1}} + \theta_t(r_{t+1}-r_f) \frac{\partial J_{t+1}}{\partial w_{t+1}}\right] \\
+	&= \frac{\partial u}{\partial c_t} - \delta E_t \left[(1 + r_{f,t+1})\frac{\partial J_{t+1}}{\partial w_{t+1}} \right] - \delta E_t \left[ \theta_t(r_{t+1}-r_f) \frac{\partial J_{t+1}}{\partial w_{t+1}}\right] \\
+	&= \frac{\partial u}{\partial c_t} - \delta E_t \left[(1 + r_{f,t+1})\frac{\partial J_{t+1}}{\partial w_{t+1}} \right] - \delta \theta_t E_t \left[(r_{t+1}-r_f) \frac{\partial J_{t+1}}{\partial w_{t+1}}\right] \\
 	&= \frac{\partial u}{\partial c_t} - \delta E_t \left[(1 + r_{f,t+1})\frac{\partial J_{t+1}}{\partial w_{t+1}} \right]
 \end{align*}
 
 Using the Euler Equation, the envelope condition is be derived:
 \begin{align*}
-	\frac{\partial J_t}{\partial w_t} &= \frac{\partial c_t}{\partial w_t} \frac{\partial u_t}{\partial c_t} + \delta E_t \left[\left[1 + r_{f,t+1} + \theta_t(r_{t+1}-r_{f, t+1}) \right]\frac{\partial J_{t+1}}{\partial w_{t+1}}\right]\\
-	&- \delta E_t \left[\left[1 + r_{f,t+1} + \theta_t(r_{t+1}-r_{f, t+1}) \right]\frac{\partial c_t}{\partial w_t}\frac{\partial J_{t+1}}{\partial w_{t+1}}\right]\\
-	&- \delta E_t\left[(w_t - c_t)(r_{t+1}-r_{f, t+1})\frac{\partial \theta_t}{\partial w_t}\frac{\partial J_{t+1}}{\partial w_{t+1}}\right]\\
+	\frac{\partial J_t}{\partial w_t} &= \frac{\partial c_t}{\partial w_t} \frac{\partial u_t}{\partial c_t} + \delta E_t \left[\left[1 + r_{f,t+1} + \theta_t(r_{t+1}-r_f) \right]\frac{\partial J_{t+1}}{\partial w_{t+1}}\right]\\
+	&- \delta E_t \left[\left[1 + r_{f,t+1} + \theta_t(r_{t+1}-r_f) \right]\frac{\partial c_t}{\partial w_t}\frac{\partial J_{t+1}}{\partial w_{t+1}}\right]\\
+	&- \delta E_t\left[(w_t - c_t)(r_{t+1}-r_f)\frac{\partial \theta_t}{\partial w_t}\frac{\partial J_{t+1}}{\partial w_{t+1}}\right]\\
 	&= \delta E_t \left[(1 + r_{f,t+1})\frac{\partial J_{t+1}}{\partial w_{t+1}} \right]\\
 	&= \frac{\partial u_t}{\partial c_t}
 \end{align*}
 
 With this, the Euler Conditions are derived:
 \begin{align*}
-	1 &= E_t \left[\delta \frac{\frac{\partial u}{\partial c_{t+1}}}{\frac{\partial u}{\partial c_t}}(1+r_{f, t+1})\right] \text{ and } \\
-	0 &= E_t \left[\delta \frac{\frac{\partial u}{\partial c_{t+1}}}{\frac{\partial u}{\partial c_t}}(r_{t+1} - r_{f, t+1})\right]
+	1 &= E_t \left[\delta \frac{\frac{\partial u}{\partial c_{t+1}}}{\frac{\partial u}{\partial c_t}}(1+r_f)\right] \text{ and } \\
+	0 &= E_t \left[\delta \frac{\frac{\partial u}{\partial c_{t+1}}}{\frac{\partial u}{\partial c_t}}(r_{t+1} - r_f)\right]
 \end{align*}
 
 If $ESG_t$ is uncertain an normally distributed, then $log(U(W_{t+1}))$ is log-normally distributed, with
