@@ -28,7 +28,7 @@ At each time t, the agent makes two choices, namely (a) the amount of consumptio
 
 The agent's utility function is given as 
 \begin{align*}
-	u(w_{t+1}) &= 1
+	u(w_{t+1}) &= -e^{-aw_{t+1}-bESG_t}
 \end{align*}
 
 The optimal portfolio maximizes wealth over time given choices of $c_t$ and $\theta_t$. The value function for the dynamic optimization program is formulated as:
