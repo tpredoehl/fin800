@@ -11,14 +11,6 @@
 \maketitle
 
 \section{Exercise 1}
-\subsection{set-up}
-\begin{itemize}
-	\item N=2 assets, a riskless and a risky asset
-	\item the riskless asset returns $r_{f, t+1} = r_f = const.$
-	\item the risky asset returns $r_{t+1} = \mu + \beta x_t + \sigma_r \eta_{r, t+1}$
-	\item $\eta_{r, t+1} \sim N(0,1)$
-	\item  $U(W_{t+1}) = -e^{-aW_{t+1}-bESG_t}$
-\end{itemize}
 
 \subsection{What will be the optimal portfolio choice of the investor ?}
 At each time t, the agent makes two choices, namely (a) the amount of consumption during the period $c_t$ and (b) the share $\theta_t$ of its remaining wealth $(w_t - c_t)$ to be invested into the risky asset at the beginning of the period. Given that (a) the investable universe contains only two assets and (b) the marginal utility of consumption is strictly increasing ($u'>0$), wealth is fully invested or consumed, i.e. $(1-\theta_t)$ will be invested into the riskless asset. The resulting wealth at t+1 therefore is :
@@ -77,5 +69,13 @@ If $ESG_t$ is uncertain an normally distributed, then $log(U(W_{t+1}))$ is log-n
 	&= E \left[-aW_{t+1} - bESG_t\right] + \frac{1}{2}VAR(-aW_{t+1} - bESG_t)
 \end{align*}
 
+\subsection{set-up}
+\begin{itemize}
+	\item N=2 assets, a riskless and a risky asset
+	\item the riskless asset returns $r_{f, t+1} = r_f = const.$
+	\item the risky asset returns $r_{t+1} = \mu + \beta x_t + \sigma_r \eta_{r, t+1}$
+	\item $\eta_{r, t+1} \sim N(0,1)$
+	\item  $U(W_{t+1}) = -e^{-aW_{t+1}-bESG_t}$
+\end{itemize}
 
 \end{document}
