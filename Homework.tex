@@ -101,5 +101,12 @@ The welfare of the investor is obtained by inserting the optimal portfolio $\phi
 \subsection{Now assume that the ESG rating is uncertain and follows a normal distribution ($\mu, \sigma$), independent from $\eta_{r,t+1}$. Repeat the previous questions.}
 
 \section{inter-temporal consumption}
-
+\begin{SCRIPT 
+	dialog = new UniversalInputDialog() 
+	dialog.setWindowTitle("Git commit / push") 
+	dialog.add("Commited by Olek P", "Comment", "comment") 
+	if (dialog.exec() != null) {
+		comment = dialog.get("comment")
+		buildManager.runCommand("git commit -a -m \"" + comment + "\"", editor.fileName())
+}}
 \end{document}
