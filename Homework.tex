@@ -39,14 +39,7 @@ The optimal portfolio maximizes wealth over time given choices of $c_t$ and $\th
 	&= \max_{(c_t, \theta_t)} \left[u(c_t) + \delta E_t\left[J_{t+1}((w_t - c_t)[R_f + \theta_t R_{e, t+1} ])\right]\right]
 \end{align*}
 
-The margin utility of consumption and portfolio policy are:
-\begin{align*}
-	\frac{\partial u}{\partial c_t} &= -ac_t
-\end{align*}
-
-
 Given $u'>0$ and $u''<0$ by construction, FOCs are necessary and sufficient to establish a maximum.
-
 \begin{align}
 	\frac{\partial J_t}{\partial c_t} = 0 &= \frac{\partial u}{\partial c_t} - \delta E_t \left[[R_f + \theta_t (R_{t+1} - R_f) ]\frac{\partial J_{t+1}}{\partial w_{t+1}}\right]\\
 	\frac{\partial J_t}{\partial \theta_t} = 0 &= E_t \left[(R_{t+1}-R_f) \frac{\partial J_{t+1}}{\partial w_{t+1}} \right]
