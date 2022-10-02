@@ -21,6 +21,9 @@ An agent with initial wealth $w_t$ at time t invests a fraction of wealth $\frac
 	&= w_t R_f + \phi (R_{t+1} - R_f)
 \end{align*}
 
+The random variable $R_{t+1}$ is normally distributed with 
+$$E[R_{t+1}] = 1+\mu+\beta x_t$$
+
 The agent's utility function then is:
 \begin{align*}
 	u(w_{t+1}) &= -e^{-aw_{t+1} - bESG_t}\\
