@@ -10,5 +10,82 @@
 
 \maketitle
 
+\section{Exercise 1}
+
+\subsection{What will be the optimal portfolio choice of the investor ?}
+
+
+\section{Annex 1}
+At each time t, the agent makes two choices, namely (a) the amount of consumption during the period $c_t$ and (b) the share $\theta_t$ of its remaining wealth $(w_t - c_t)$ to be invested into the risky asset at the beginning of the period. Given that (a) the investable universe contains only two assets and (b) the marginal utility of consumption is strictly increasing ($u'>0$), wealth is fully invested or consumed, i.e. $(1-\theta_t)$ will be invested into the riskless asset. The resulting wealth at t+1 therefore is :
+\begin{align*}
+	w_{t+1} &= (w_t - c_t)\left[(1-\theta_t)(1+r_f)+ \theta_t(1+r_{t+1}) \right]\\
+	&= (w_t - c_t)[(1-\theta_t)R_f + \theta_t R_{t+1}]\\
+	&= (w_t - c_t)[R_f-\theta_t R_f + \theta_t R_{t+1}]\\
+	&= (w_t - c_t)[R_f + \theta_t (R_{t+1} - R_f) ]\\
+	&= (w_t - c_t)[R_f + \theta_t (R_{e, t+1})]\\
+	(w_t - c_t) &= \text{savings/investment in period t}\\
+	[R_f + \theta_t (R_{e, t+1}) ] &= \text{return on investment in period t+1}\\
+	R_f &= 1+r_f = \text{constant risk free return}\\
+	R_{e, t+1} &= r_{t+1} - r_f = \text{excess return on the risky asset}
+\end{align*}
+
+The agent's utility function is given as 
+\begin{align*}
+	u(w_{t+1}) &= -e^{-aw_{t+1}-bESG_t}\\
+	&= -e^{-a (w_t - c_t)[R_f + \theta_t (R_{e, t+1})] -bESG_t}
+\end{align*}
+
+\newpage
+The optimal portfolio maximizes wealth over time given choices of $c_t$ and $\theta_t$. The value function for the dynamic optimization program is formulated as:
+\begin{align*}
+	J_t(W_t) &= \max_{(c, \theta)_{t=0}^T} E_t \left[\sum_{s=t}^{T} \delta^{s-t}u(c_s)\right]\\
+	&= \max_{(c_t, \theta_t)} \left[u(c_t) + \delta E_t\left[J_{t+1}(W_{t+1})\right]\right]\\
+	&= \max_{(c_t, \theta_t)} \left[u(c_t) + \delta E_t\left[J_{t+1}((w_t - c_t)[R_f + \theta_t R_{e, t+1} ])\right]\right]
+\end{align*}
+
+Given $u'>0$ and $u''<0$ by construction, FOCs are necessary and sufficient to establish a maximum.
+\begin{align}
+	\frac{\partial J_t}{\partial c_t} = 0 &= \frac{\partial u}{\partial c_t} - \delta E_t \left[[R_f + \theta_t (R_{t+1} - R_f) ]\frac{\partial J_{t+1}}{\partial w_{t+1}}\right]\\
+	\frac{\partial J_t}{\partial \theta_t} = 0 &= E_t \left[(R_{t+1}-R_f) \frac{\partial J_{t+1}}{\partial w_{t+1}} \right]
+\end{align}
+
+Using (2), (1) is simplified as the Euler Equation
+\begin{align*}
+	0 &= \frac{\partial u}{\partial c_t} - \delta E_t \left[\left[1 + r_f + \theta_t(r_{t+1}-r_f) \right]\frac{\partial J_{t+1}}{\partial w_{t+1}}\right]\\
+	&= \frac{\partial u}{\partial c_t} - \delta E_t \left[(1 + r_f) \frac{\partial J_{t+1}}{\partial w_{t+1}} + \theta_t(r_{t+1}-r_f) \frac{\partial J_{t+1}}{\partial w_{t+1}}\right] \\
+	&= \frac{\partial u}{\partial c_t} - \delta E_t \left[(1 + r_f)\frac{\partial J_{t+1}}{\partial w_{t+1}} \right] - \delta E_t \left[ \theta_t(r_{t+1}-r_f) \frac{\partial J_{t+1}}{\partial w_{t+1}}\right] \\
+	&= \frac{\partial u}{\partial c_t} - \delta E_t \left[(1 + r_f)\frac{\partial J_{t+1}}{\partial w_{t+1}} \right] - \delta \theta_t E_t \left[(r_{t+1}-r_f) \frac{\partial J_{t+1}}{\partial w_{t+1}}\right] \\
+	&= \frac{\partial u}{\partial c_t} - \delta E_t \left[(1 + r_f)\frac{\partial J_{t+1}}{\partial w_{t+1}} \right]
+\end{align*}
+
+Using the Euler Equation, the envelope condition is be derived:
+\begin{align*}
+	\frac{\partial J_t}{\partial w_t} &= \frac{\partial c_t}{\partial w_t} \frac{\partial u_t}{\partial c_t} + \delta E_t \left[\left[1 + r_f + \theta_t(r_{t+1}-r_f) \right]\frac{\partial J_{t+1}}{\partial w_{t+1}}\right]\\
+	&- \delta E_t \left[\left[1 + r_f + \theta_t(r_{t+1}-r_f) \right]\frac{\partial c_t}{\partial w_t}\frac{\partial J_{t+1}}{\partial w_{t+1}}\right]\\
+	&- \delta E_t\left[(w_t - c_t)(r_{t+1}-r_f)\frac{\partial \theta_t}{\partial w_t}\frac{\partial J_{t+1}}{\partial w_{t+1}}\right]\\
+	&= \delta E_t \left[(1 + r_f)\frac{\partial J_{t+1}}{\partial w_{t+1}} \right]\\
+	&= \frac{\partial u_t}{\partial c_t}
+\end{align*}
+
+With this, the Euler Conditions are derived:
+\begin{align*}
+	1 &= E_t \left[\delta \frac{\frac{\partial u}{\partial c_{t+1}}}{\frac{\partial u}{\partial c_t}}(1+r_f)\right] \text{ and } \\
+	0 &= E_t \left[\delta \frac{\frac{\partial u}{\partial c_{t+1}}}{\frac{\partial u}{\partial c_t}}(r_{t+1} - r_f)\right]
+\end{align*}
+
+If $ESG_t$ is uncertain an normally distributed, then $log(U(W_{t+1}))$ is log-normally distributed, with
+\begin{align*}
+	\log E \left[-e^{-aW_{t+1} - bESG_t}\right] &= E \log(-e^{-aW_{t+1} - bESG_t}) + \frac{1}{2}VAR(\log(-e^{-aW_{t+1} - bESG_t}))\\
+	&= E \left[-aW_{t+1} - bESG_t\right] + \frac{1}{2}VAR(-aW_{t+1} - bESG_t)
+\end{align*}
+
+\subsection{set-up}
+\begin{itemize}
+	\item N=2 assets, a riskless and a risky asset
+	\item the riskless asset returns $r_{f, t+1} = r_f = const.$
+	\item the risky asset returns $r_{t+1} = \mu + \beta x_t + \sigma_r \eta_{r, t+1}$
+	\item $\eta_{r, t+1} \sim N(0,1)$
+	\item  $U(W_{t+1}) = -e^{-aW_{t+1}-bESG_t}$
+\end{itemize}
 
 \end{document}
