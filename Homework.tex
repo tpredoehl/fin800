@@ -28,7 +28,7 @@ The optimal portfolio maximizes wealth over time given choices of $c_t$ and $\th
 \begin{align*}
 	J_t(W_t) &= \max_{(c, \theta)_{t=0}^T} E_t \left[\sum_{s=t}^{T} \delta^{s-t}u(c_s)\right]\\
 	&= \max_{(c_t, \theta_t)} \left[u(c_t) + \delta E_t\left[J_{t+1}(W_{t+1})\right]\right]\\
-	&= \max_{(c_t, \theta_t)} \left[u(c_t) + \delta E_t\left[J_{t+1}((w_t - c_t) \left[1 + r_f + \theta_t(r_{t+1}-r_f) \right])\right]\right]
+	&= \max_{(c_t, \theta_t)} \left[u(c_t) + \delta E_t\left[J_{t+1}(1)\right]\right]
 \end{align*}
 
 Given $u'>0$ and $u''<0$ by construction, FOCs are necessary and sufficient to establish a maximum.
