@@ -40,7 +40,7 @@ The random variable $R_{t+1}$ is normally distributed with
 The random variable $\tilde{x} = -a(w_t R_f + \phi (R_{t+1} - R_f)) - bESG_t$ is normally distributed with 
 \begin{align*}
 	E[\tilde{x}] &= -aw_t R_f -a \phi (1+\mu+\beta x_t - R_f)) - bESG_t\\
-	V[\tilde{x}] &= E[(R_{t+1} - E[R_{t+1}])^2]\\
+	V[\tilde{x}] &= E[\tilde{x} - E[\tilde{x}])^2]\\
 	&= E[(1 + \mu + \beta x_t + \sigma_r \eta_{r, t+1} - 1 - \mu - \beta x_t)^2]\\
 	&= E[\sigma_r^2 \eta_{r, t+1}^2]\\
 	&= \sigma_r^2 E[\eta_{r, t+1}^2]\\
