@@ -109,7 +109,21 @@ The welfare of the investor is obtained by inserting the optimal portfolio $\phi
 Expected optimal wealth $$E_t[w_{t+1}] = w_t R_f + \frac{1}{a}\text{Sharpe}^2$$ is a function of the random variable $R_{t+1}$. Its components $x_t$ and $\sigma_r$ are determined at time t, i.e. are no longer random. Randomness remains in the form of the normally distributed $\eta_{r,t+1}$. The expected optimal wealth therefore is \comment{normally distributed}{Here, I don't really have an idea. It appears to be too simplistic as the absence of randomness at t does not necessarily reduce to normality.} as well.
 
 \subsection{Comment on the impact of preference for ESG on the optimal portfolio.}
+Preferences for ESG enter the agent's utility function with factor b. The factor $ESG_t$ represents the ESG rating of the risky asset at time t. Consequently, a 1-notch better ESG rating raises absolut utility by b. The motion of wealth, the return on the risky asset and therefore the optimal portfolio choice are unaffected by the ESG rating.
+
 \subsection{Now assume that the ESG rating is uncertain and follows a normal distribution ($\mu, \sigma$), independent from $\eta_{r,t+1}$. Repeat the previous questions.}
+The random variable $\tilde{x} = -a(w_t R_f + \phi (R_{t+1} - R_f)) - bESG_t$ is normally distributed with 
+\begin{align*}
+	E[\tilde{x}] &= -aw_t R_f -a \phi (1+\mu+\beta x_t - R_f)) - bESG_t\\
+	&= -aw_t R_f - a \phi - a \phi \mu - a \phi \beta x_t + a \phi R_f - bESG_t\\
+	V[\tilde{x}] &= E[(\tilde{x} - E[\tilde{x}])^2]\\
+	&= E[(-aw_t R_f - a \phi - a \phi \mu - a \phi \beta x_t - a \phi \sigma_r \eta_{r, t+1} + a \phi R_f - bESG_t \\
+	&+ aw_t R_f + a \phi + a \phi \mu + a \phi \beta x_t - a \phi R_f + bESG_t)^2]\\
+	&= E[(- a \phi \sigma_r \eta_{r, t+1})^2]\\
+	&= E[a^2 \phi^2 \sigma_r^2 \eta_{r, t+1}^2]\\
+	&= a^2 \phi^2 \sigma_r^2 E[\eta_{r, t+1}^2]\\
+	&= a^2 \phi^2 \sigma_r^2
+\end{align*}
 
 \section{inter-temporal consumption}
 
