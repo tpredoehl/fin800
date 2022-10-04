@@ -114,7 +114,7 @@ Preferences for ESG enter the agent's utility function with factor b. The factor
 \subsection{Now assume that the ESG rating is uncertain and follows a normal distribution ($\mu, \sigma$), independent from $\eta_{r,t+1}$. Repeat the previous questions.}
 The random variable $\tilde{x} = -a(w_t R_f + \phi (R_{t+1} - R_f)) - bESG_t$ is normally distributed with 
 \begin{align*}
-	E[\tilde{x}] &= -a(w_t R_f - \phi (1+\mu+\beta x_t - R_f)) - bE[ESG_t]\\
+	E[\tilde{x}] &= -a(w_{t+1}) - bE[ESG_t]\\
 	V[\tilde{x}] &= E[(\tilde{x} - E[\tilde{x}])^2]\\
 	&= E[-a(w_t R_f - \phi (1+\mu+\beta x_t - R_f)) -bESG_t \\
 	&+ a(w_t R_f - \phi (1+\mu+\beta x_t - R_f)) + bE[ESG_t])^2]\\
