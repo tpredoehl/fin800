@@ -46,7 +46,7 @@ The random variable $\tilde{x} = -aw_{t+1} - bESG_t$ is normally distributed wit
 	&= E[(-a(w_t R_f + \phi (R_{t+1} - R_f)) - bESG_t \\
 	&+ a(w_t R_f + \phi (E[R_{t+1}] - R_f)) + bE[ESG_t])^2]\\
 	&= E[(-a(\phi (R_{t+1})) - bESG_t + a(\phi (E[R_{t+1}])) + bE[ESG_t])^2]\\
-	&= E[(-a(\phi (R_{t+1})) + a(\phi (E[R_{t+1}])))^2]\\
+	&= E[(-a(\phi R_{t+1} + a \phi E[R_{t+1}])^2]\\
 	&= E[(- a \phi \sigma_r \eta_{r, t+1})^2]\\
 	&= E[a^2 \phi^2 \sigma_r^2 \eta_{r, t+1}^2]\\
 	&= a^2 \phi^2 \sigma_r^2 E[\eta_{r, t+1}^2]\\
