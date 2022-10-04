@@ -117,7 +117,7 @@ The random variable $\tilde{x} = -a(w_t R_f + \phi (R_{t+1} - R_f)) - bESG_t$ is
 	E[\tilde{x}] &= -a(w_t R_f - \phi (1+\mu+\beta x_t - R_f)) - bE[ESG_t]\\
 	V[\tilde{x}] &= E[(\tilde{x} - E[\tilde{x}])^2]\\
 	&= E[-a(w_t R_f - \phi (1+\mu+\beta x_t - R_f)) -bESG_t \\
-	&+ aw_t R_f + a \phi + a \phi \mu + a \phi \beta x_t - a \phi R_f + bE[ESG_t])^2]\\
+	&+ a(w_t R_f - \phi (1+\mu+\beta x_t - R_f)) + bE[ESG_t])^2]\\
 	&= E[(- a \phi \sigma_r \eta_{r, t+1} - b(ESG_t - E[ESG_t]))^2]\\
 	&= E[a^2 \phi^2 \sigma_r^2 \eta_{r, t+1}^2 - (ESG_t)\\
 	&= E[a^2 \phi^2 \sigma_r^2 \eta_{r, t+1}^2] + bVar(ESG_t)\\
