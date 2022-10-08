@@ -1,172 +1,229 @@
-\documentclass[]{article}
+\documentclass[12pt]{article}
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{easyReview}
+\usepackage{setspace}
+\usepackage{indentfirst}
+\usepackage{parskip}
+\usepackage{easyReview} %can be used for annotation.
 
 %opening
 \title{FIN800 Discrete Time Financial Economics - Homework 1}
 \author{Giovanni Maffei, Timo Predöhl}
 
 \begin{document}
-
-\maketitle
-
-\section{portfolio choice}
-An agent with initial wealth $w_t$ at time t invests a fraction of wealth $\frac{\phi}{w_t}$ in the risky asset and the remainder $(1-\frac{\phi}{w_t})$ in the riskless asset. The resulting wealth at time t+1 is:
-\begin{align*}
-	R_{f,t+1} &= R_{f} = 1+r_f = const.\\
-	R_{t+1} &= 1 + \mu + \beta x_t + \sigma_r \eta_{r, t+1}\\
-	w_{t+1} &= w_t[(1-\frac{\phi}{w_t})R_f+\frac{\phi}{w_t} R_{t+1}]\\
-	&= w_t[R_f - \frac{\phi}{w_t} R_f + \frac{\phi}{w_t} R_{t+1}]\\
-	&= w_t[R_f + \frac{\phi}{w_t} (R_{t+1} - R_f)]\\
-	&= w_t R_f + \phi (R_{t+1} - R_f)
-\end{align*}
-
-The agent's utility function then is:
-\begin{align*}
-	u(w_{t+1}) &= -e^{-aw_{t+1} - bESG_t}\\
-	&= -e^{-a(w_t R_f + \phi (R_{t+1} - R_f)) - bESG_t}\\
-\end{align*}
-
-The random variable $R_{t+1}$ is normally distributed with 
-\begin{align*}
-	E[R_{t+1}] &= 1+\mu+\beta x_t\\
-	V[R_{t+1}] &= E[(R_{t+1} - E[R_{t+1}])^2]\\
-	&= E[(1 + \mu + \beta x_t + \sigma_r \eta_{r, t+1} - 1 - \mu - \beta x_t)^2]\\
-	&= E[\sigma_r^2 \eta_{r, t+1}^2]\\
-	&= \sigma_r^2 E[\eta_{r, t+1}^2]\\
-	&= \sigma_r^2
-\end{align*}
-
-The random variable $\tilde{x} = aw_{t+1} + bESG_t$ is normally distributed with 
-\begin{align*}
-	E[\tilde{x}] &= aE[w_t R_f + \phi (R_{t+1} - R_f)] + bE[ESG_t]\\
-	&= a(w_t R_f + \phi (E[R_{t+1}] - R_f)) + bESG_t\\
-	V[\tilde{x}] &= E[(\tilde{x} - E[\tilde{x}])^2]\\
-	&= E[(a(w_t R_f + \phi (R_{t+1} - R_f)) + bESG_t \\
-	&- a(w_t R_f + \phi (E[R_{t+1}] - R_f)) - bESG_t)^2]\\
-	&= E[(a\phi (R_{t+1}) - a \phi E[R_{t+1}])^2]\\
-	&= a^2 \phi^2 E[(R_{t+1} - E[R_{t+1}])^2]\\
-	&= a^2 \phi^2 \sigma_r^2\\
-\end{align*}
-
-Therefore, using the fact that the expectation of the exponential of a normally distributed random variable is the exponential of the mean plus half of the variance, the expected utility is
-\begin{align*}
-	E[u(w_{t+1})] &= E[-e^{-a(w_t R_f + \phi (R_{t+1} - R_f)) - bESG_t}]\\
-	&= -e^{-aw_t R_f -a \phi (1+\mu+\beta x_t - R_f) - bESG_t + \frac{1}{2}a^2 \phi^2 \sigma_r^2}
-\end{align*}
-
-Maximizing expected utility is equivalent to maximizing the certainty equivalent $$-aw_t R_f -a \phi (E[R_{t+1}] - R_f) - bESG_t + \frac{1}{2}a^2 \phi^2 \sigma_r^2$$.
-
-Differentiating with respect to $\phi$ and setting the derivative to zero yields: 
-\begin{align*}
-	0 &= \frac{\partial (-aw_t R_f -a \phi (E[R_{t+1}] - R_f) - bESG_t + \frac{1}{2}a^2 \phi^2 \sigma_r^2)}{\partial(\phi)}\\
-	&= -a (E[R_{t+1}] - R_f) + \phi a^2 \sigma_r^2\\
-	\phi &= \frac{a (E[R_{t+1}] - R_f)}{a^2 \sigma_r^2}\\
-	&= \frac{(E[R_{t+1}] - R_f)}{a \sigma_r^2}\\
-	&= \frac{1}{a \sigma_r}\text{Sharpe}
-\end{align*}
-
-\subsection{What will be the optimal portfolio choice of the investor ?}
-The optimal amount $\phi$ to invest in the risky asset is $$\phi^* = \frac{(E[R_{t+1}] - R_f)}{a \sigma_r^2} = \frac{1}{a \sigma_r}\text{Sharpe}$$.
-
-The optimal choice $\phi^*$ 
-\begin{itemize}
-	\item is an increasing function of the risk premium $E[R_{t+1}]-R_f$,
-	\item is a decreasing function of the variance $\sigma_r^2$,
-	\item is a decreasing function of the investor’s absolute risk aversion a,
-	\item is positive when the risk premium is positive, and
-	\item does not depend on the initial wealth $w_t$.
-\end{itemize}.
-
-\subsection{What will be the mean and variance of the corresponding optimal wealth?}
-Optimal wealth is obtained by inserting the optimal portfolio into the wealth function:
-\begin{align*}
-	E[w_{t+1}] &= w_t R_f + \phi^* (E[R_{t+1}]-R_f)\\
-	&= w_t R_f + \frac{(E[R_{t+1}] - R_f)^2}{a \sigma_r^2}\\
-	&= w_t R_f + \frac{1}{a}\text{Sharpe}^2\\
-	V[w_{t+1}] &= E[(w_{t+1} - E[w_{t+1}])^2]\\
-	&= E[(w_t R_f + \phi^* (R_{t+1}-R_f) - w_t R_f - \phi^* (E[R_{t+1}]-R_f))^2]\\
-	&= E[(\phi^* R_{t+1} - \phi^* R_f - \phi^* E[R_{t+1}] + \phi^* R_f)^2]\\
-	&= E[(\phi^*(R_{t+1} - E[R_{t+1}]))^2]\\
-	&= \phi^{*2} V[R_{t+1}]\\
-	&= \frac{(E[R_{t+1}] - R_f)^2}{a^2 \sigma_r^4} \sigma_r^2\\
-	&= \frac{1}{a^2}\text{Sharpe}^2
-\end{align*}
-
-\subsection{Compute the welfare of the investor.}
-The welfare of the investor is obtained by inserting the optimal portfolio $\phi^*$ into certainty equivalent: 
-\begin{align*}
-	\text{welfare} &= -aw_t R_f -a \phi^* (E[R_{t+1}] - R_f) - bESG_t + \frac{1}{2}a^2 \phi^{*2} \sigma_r^2\\
-	&= -aw_t R_f -a \frac{1}{a \sigma_r}\text{Sharpe} (E[R_{t+1}] - R_f) - bESG_t + \frac{1}{2}a^2 \frac{1}{a^2 \sigma_r^2}\text{Sharpe}^2 \sigma_r^2\\
-	&= -aw_t R_f -\text{Sharpe}^2 - bESG_t + \frac{1}{2}\text{Sharpe}^2\\
-	&= -aw_t R_f - bESG_t - \frac{1}{2}\text{Sharpe}^2\\
-\end{align*}
-
-\subsection{What is the distribution of the optimal wealth ? Comment.}
-
-Expected optimal wealth $$E_t[w_{t+1}] = w_t R_f + \frac{1}{a}\text{Sharpe}^2$$ is a function of the random variable $R_{t+1}$. Its components $x_t$ and $\sigma_r$ are determined at time t, i.e. are no longer random. Randomness remains in the form of the normally distributed $\eta_{r,t+1}$. The expected optimal wealth therefore is \comment{normally distributed}{Here, I don't really have an idea. It appears to be too simplistic as the absence of randomness at t does not necessarily reduce to normality.} as well.
-
-\subsection{Comment on the impact of preference for ESG on the optimal portfolio.}
-Preferences for ESG enter the agent's utility function with factor b. The factor $ESG_t$ represents the ESG rating of the risky asset at time t. Consequently, a 1-notch better ESG rating raises absolut utility by b. The motion of wealth, the return on the risky asset and therefore the optimal portfolio choice are unaffected by the ESG rating.
-
-\subsection{Now assume that the ESG rating is uncertain and follows a normal distribution ($\mu, \sigma$), independent from $\eta_{r,t+1}$. Repeat the previous questions.}
-The random variable $\tilde{x} = aw_{t+1} + bESG_t$ is normally distributed with 
-\begin{align*}
-	E[\tilde{x}] &= aE[w_t R_f + \phi (R_{t+1} - R_f)] + bE[ESG_t]\\
-	&= a(w_t R_f + \phi (E[R_{t+1}] - R_f)) + bE[ESG_t]\\
-	V[\tilde{x}] &= E[(\tilde{x} - E[\tilde{x}])^2]\\
-	&= E[(a(w_t R_f + \phi (R_{t+1} - R_f)) + bESG_t \\
-	&- a(w_t R_f + \phi (E[R_{t+1}] - R_f)) - bE[ESG_t])^2]\\
-	&= E[(a\phi (R_{t+1} - E[R_{t+1}]) +b(ESG_t - E[ESG_t]))^2]\\
-	&= a^2 \phi^2 \sigma_r^2 + b^2 \sigma_{esg}^2 + E[2 a\phi (R_{t+1} - E[R_{t+1}]) b(ESG_t - E[ESG_t])]\\
-	&= a^2 \phi^2 \sigma_r^2 + b^2 \sigma_{esg}^2 + E[2 a\phi \sigma_r \eta_{r, t+1} b(ESG_t - E[ESG_t])]\\
-	&= a^2 \phi^2 \sigma_r^2 + b^2 \sigma_{esg}^2 \text{, given independence of ESG and $\eta_{r, t+1}$}\\
-\end{align*}
-
-
-\section{inter-temporal consumption}
-The 2-period, single asset utility maximization program is formulated as
-\begin{align*}
-	\max_{c_t, c_{t+1}} U(c_t, c_{t+1}) &= u(c_t) + \delta u(c_{t+1}), s.t. c_t = y_t - \lambda, c_{t+1} = y_{t+1} + \lambda (1+R)\\
-	&= \frac{c_t^{1-\gamma}}{1-\gamma} + \delta \frac{c_{t+1}^{1-\gamma}}{1-\gamma}, s.t. c_t + \frac{c_{t+1}}{1+R} = y_t + \frac{y_{t+1}}{1+R}
-\end{align*}
-
-Formulating the Lagrangian and FOCs for $c_t$ and $c_{t+1}$ yields
-\begin{align}
-	L &= u(c_t) + \delta u(c_{t+1}) - \phi (\frac{c_{t+1}}{1+R} - y_t - \frac{y_{t+1}}{1+R})\\
-	\frac{\partial L}{\partial c_t} &= u_{c_t}' - \phi = 0\\
-	\frac{\partial L}{\partial c_{t+1}} &= \delta u_{c_{t+1}}' - \phi \frac{1}{1+R}= 0\\
-	\frac{\delta u_{c_{t+1}}'}{u_{c_t}'} &= \frac{1}{1+R}\\
-	\delta \left( \frac{c_{t+1}}{c_t} \right)^{-\gamma} &= \frac{1}{1+R} = \text{IMRS}\\
-	\frac{c_{t+1}}{c_t} &= \delta^{\frac{1}{\gamma}}(1+R)^{\frac{1}{\gamma}}\\
-	\frac{\partial(\frac{c_{t+1}}{c_t})}{\partial(1+R)} \frac{(1+R)}{\frac{c_{t+1}}{c_t}} &= \frac{1}{\gamma} = \text{IES}
-\end{align}
-
-\subsection{What will be the optimal portfolio and how sensitive it is relative to $\gamma$?}
-Given known endowment $w_0 = y_t + \frac{y_{t+1}}{1+R}$, known return on the risky asset R and consequently the maximum achievable utility $\bar{U}$, the optimal portfolio is determined by the IMRS (5), whereby the agent would at most forego current consumption in the amount of the IMRS in order invest this amount, earn R and consume an additional unit in the future.  The optimal portfolio and therefore the ratio of future consumption to current consumption is sensitiv to $\gamma$
-\begin{align*}
-	\left(\frac{c_{t+1}}{c_t}\right)^\gamma &= \delta (1+R)\\
-	\gamma \ln \left(\frac{c_{t+1}}{c_t}\right) &= \ln \delta + \ln (1+R)\\
-	\ln \left(\frac{c_{t+1}}{c_t}\right) &= \frac{1}{\gamma} \ln \delta + \frac{1}{\gamma} \ln (1+R)\\
-	\frac{\partial \ln \left(\frac{c_{t+1}}{c_t}\right)}{\partial \frac{1}{\gamma}} &= \ln \delta + \ln (1+R)\\
-\end{align*}
-A \comment{decrease in risk aversion}{interesting question: what is the direction of causality? do agents reduce risk aversion, when they observe higher returns or do returns increase when agents happen to have lower risk aversion?} $\gamma$, i.e. an increase of $\frac{1}{\gamma}$ increases the preference for future consumption by a percentage equal to the sum personal time preference $\delta$ and return on the risky asset R. The less risk averse agent accepts to reduce current consumption and invests more in the risky asset. 
-
-\subsection{Rewrite the utility function in a recursive way using a CES aggregator. What will then be the optimal portfolio and how sensitive it is relative to $\gamma$ and the IES ?}
-The original utility function is turned into a CES aggregator using:
-\begin{align*}
-	U(c_t, c_{t+1}) &= \frac{1}{1-\gamma} \left[c_t^{1-1/\rho} + \delta c_{t+1}^{1-1/\rho}\right]^{\frac{1-\gamma}{1-1/\rho}}\\
-	u_{c_t}' &= \frac{\partial u}{\partial c_t} = \frac{1}{1-1\rho}\left[c_t^{1-1/\rho} + \delta c_{t+1}^{1-1/\rho}\right]^{\frac{1-\gamma}{1-1/\rho} - \frac{1-1/\rho}{1-1/\rho}} (1-1/\rho)c_t^{-1/\rho}\\
-	&= \left[c_t^{1-1/\rho} + \delta c_{t+1}^{1-1/\rho}\right]^{\frac{-\gamma + 1/\rho}{1-1/\rho}} c_t^{-1/\rho}\\
-	u_{c_{t+1}}' &= \frac{\partial u}{\partial c_{t+1}} = \frac{1}{1-1\rho}\left[c_t^{1-1/\rho} + \delta c_{t+1}^{1-1/\rho}\right]^{\frac{1-\gamma}{1-1/\rho} - \frac{1-1/\rho}{1-1/\rho}} \delta (1-1/\rho)c_{t+1}^{-1/\rho}\\
-	&= \left[c_t^{1-1/\rho} + \delta c_{t+1}^{1-1/\rho}\right]^{\frac{-\gamma + 1/\rho}{1-1/\rho}} \delta c_{t+1}^{-1/\rho}\\
-	IMRS &: \left( \frac{u_{c_{t+1}}'}{u_{c_t}'} \right) = \delta \left(\frac{c_{t+1}}{c_t}\right)^{-1/\rho}\\
-	\ln (1+R) &= -\ln IMRS = \ln \delta -\frac{1}{\rho} \ln \left(\frac{c_{t+1}}{c_t}\right)\\
-	\rho \ln IMRS &= -\rho \ln \delta + \ln \left(\frac{c_{t+1}}{c_t}\right)\\
-	IES &: \frac{\partial \ln \left(\frac{c_{t+1}}{c_t}\right)}{\partial \ln IMRS} = \rho\\
-\end{align*}
-The optimal portfolio and sensitivity to $\gamma$ is preserved since $\gamma = \frac{1}{\rho}$.
-
-
+	
+	\maketitle
+	
+	\begin{spacing}{1}
+		\tableofcontents		
+	\end{spacing}
+	\pagebreak
+	
+	\section{Exercise 1}
+	\subsection{Set-up and Definitions}
+	\begin{itemize}
+		\item N=2 assets, a riskless asset and a risky one
+		\item Frictionless markets
+		\item Two periods: t = today and t+1 = end of the investment period 
+		\item The riskless asset returns $r_{f,t+1} = r$ (deterministic and known in t)
+		\item $\eta_{r, t+1} \sim N(0,1)$
+		\item The risky asset returns $r_{t+1} = \mu + \beta x_t + \sigma_r \eta_{r, t+1}$
+		\item $E_{t}[r_{t+1}]\footnote {The derivation of the Expected Value and of the Variance of the risky asset is in Appendix 1.} = \mu + \beta x_t$
+		\item $V_{t}[r_{t+1}] = \sigma_r^2$
+		\item $W_{t} = $ investable wealth  (endowment at time t minus consumption during the period, $c_t$
+		\item  $U_{t}(W_{t+1}) = -e^{-aW_{t+1}-bESG_t}$
+		\item $a > 0 $ (the investor has positive absolute risk aversion)
+		
+	\end{itemize}
+	
+	%not sure we will need to split between consumption and wealth to invest, think it's easier just to define W as investible wealth.
+	\subsection{What will be the optimal portfolio choice of the investor ?}
+	\setlength{\parindent}{0pt} Noting: (a) the investor has already decided how much to consume at time t, $c_t$ and (b) the marginal utility of consumption is positive ($u'>0$), the agent needs to allocate its investable wealth across the only two assets available in the investable universe: (i) the risk-free bond and (ii) the risky asset. The share of the available wealth attributed to the risky asset is defined as $\theta_t$. \\
+	The resulting wealth at t+1 becomes: 
+	\begin{align*}
+		W_{t+1} &= (W_t)\left[(1-\theta_t)(1+r_{f, t+1})+ \theta_t(1+r_{t,t+1}) \right]\\
+		&= (W_t) \left[1 -\theta_t + r_{f,t+1} - \theta_t r_{f,t+1} + \theta_t + \theta_t r_{t,t+1}\right]\\
+		&= (W_t) \left[1 + r_{f,t+1} + \theta_t(r_{t,t+1}-r_{f, t+1}) \right]
+	\end{align*} \vspace{-1.5em}
+	
+	\setlength{\parindent}{0pt} The optimal portfolio choice is found by maximizing the expected utility in t+1 such that (by replacing $W_{t+1}$ with the above equation):
+	\begin{align*}
+		\max_{(\theta_t)} E_t[U_{t}(W_{t+1})] &= E_t[-e^{(-aW_t) [1 + r_{f,t+1} + \theta_t(r_{t,t+1}-r_{f, t+1})] - bESG_t}] \\
+	\end{align*}\vspace{-3.5em}
+	
+	Additionally, as $r_{t+1}$ is normally distributed, we can observe that the argument of the exponential function is a linear combination of a random variable normally distributed. Hence, considering that the expectation of the exponential of a normal corresponds to the exponential of the random variable's mean plus half of the variance, it follows that the optimization problem can be rewritten as: \vspace{-3em}\\
+	
+	\begin{align*}
+		\max_{(\theta_t)} E_t[U_{t}(W_{t+1})] &= E_t[-e^{(-aW_t) [1 + r_{f,t+1} + \theta_t(E_{t}[r_{t+1}]-r_{f, t+1})] - bESG_t - \frac{1}{2}a^2W_t^2\theta_t^2\sigma_r^2}] \\
+	\end{align*} \vspace{-3.25em}
+	
+	Given the investor has a utility function characterized by non-satiation and risk aversion ($u'>0$ and $u''<0$), portfolio weights are defined by optimizing the expression below: \vspace{-3em}\\
+	
+	\begin{align*}
+		(-aW_t) [1 + r_{f,t+1} + \theta_t(E_{t}[r_{t+1}]-r_{f, t+1})] - bESG_t - \frac{1}{2}(a^2W_t^2\theta_t^2\sigma_r^2) \\
+	\end{align*} \vspace{-3em}
+	
+	The first-order condition (FOC) is: \vspace{-2.5em}\\
+	
+	\begin{align*}
+		0 &= (-aW_t)(E_{t}[r_{t+1}]-r_{f, t+1})) - (a^2W_t^2\theta_t\sigma_r^2) \\
+	\end{align*} \vspace{-3em}
+	
+	The optimal portfolio that solves the FOC is: 
+	
+	\begin{equation} \label{Optimal weight}
+		\theta_t^* = \frac{1}{aW_t}\frac{(E_{t}[r_{t+1}]-r_{f, t+1})}{\sigma_r^2} \\
+	\end{equation}
+	
+	A few observations on \ref{Optimal weight}:
+	\begin{itemize}
+		\item The risky-asset optimal portfolio weight depends on $aW_t$ which corresponds to the relative risk aversion of the investor.\footnote {We can also observe that the solution is not scale invariant: as the stock of investable wealth grows, the investment in the risky asset remains constant implying IRRA (Increasing Relative Risk Aversion) preferences.}
+		\item The second term of \ref{Optimal weight} corresponds to the Sharpe Ratio (expected excess return of the risky asset standardized for its standard deviation) further divided by asset standard deviation. This metric measures how efficiently the risky asset rewards ex-ante the quadratic risk borne by the investor.
+		\item Assuming $E_{t}[r_{t+1}] - r_{f, t+1}$ is positive, the Reader can infere that, regardless of the actual preferences of the subject, any investor will keep some holdings of the risky asset in the optimal portfolio.\\     
+	\end{itemize}
+	
+	\subsection{What will be the mean and variance of the corresponding optimal wealth ?} \label{Optimal Wealth}
+	
+	Given \ref{Optimal weight}, we can rewrite the optimal $W_{t+1}^{*}$ as: \vspace{-2.5em}\\
+	
+	\begin{align*}
+		W_{t+1}^{*} &= (W_t) \left[1 + r_{f,t+1} + \theta_t^*(r_{t,t+1}-r_{f, t+1}) \right]\\
+		&= (W_t) \left[1 + r_{f,t+1} + \frac{1}{(aW_t)}\frac{(E_{t}[r_{t+1}]-r_{f, t+1})}{\sigma_r^2}(r_{t,t+1}-r_{f, t+1}) \right]\\
+		&= (W_t)(1 + r_{f,t+1}) + \frac{1}{a}\frac{(E_{t}[r_{t+1}]-r_{f, t+1})}{\sigma_r^2}(r_{t,t+1}-r_{f, t+1})
+	\end{align*} \vspace{-1.25em}
+	
+	The mean of $W_{t+1}^{*}$ becomes:
+	\begin{align*}
+		E_{t}[W_{t+1}^{*}] = E_{t}[(W_t)(1 + r_{f,t+1})] + E_{t}[\frac{1}{a}\frac{E_{t}[(r_{t+1}]-r_{f, t+1)}}{\sigma_r^2}(r_{t,t+1}-r_{f, t+1})]
+	\end{align*} \vspace{-1em}
+	
+	By noting that: i) $W_t$ and ii) $r_{f,t+1}$ are known in t and the expectation (conditional to t) of the expected return of the risky asset corresponds to the expected return itself by the law of iterated expectation, we can find that:    
+	\begin{equation} \label{Mean Wealth}
+		E_{t}[W_{t+1}^{*}] = W_t(1 + r_{f,t+1}) + \frac{1}{a}\frac{[E_{t}[r_{t+1}]-r_{f, t+1}]^2}{\sigma_r^2}
+	\end{equation} \vspace{-1em}
+	
+	A few observations on \ref{Mean Wealth}:
+	\begin{itemize}
+		\item The expected wealth in t+1 corresponds to the investable wealth in t capitalized at the risk free rate plus the square of the sharpe ratio of the asset divided by the absolute risk aversion of the investor.
+		\item The lower the absolute risk aversion and the higher the expected wealth of the investor is. This result arises from the consideration that the investor will tilt her portfolio to the risky asset clipping a positive reward for the risk borne hence, improving the expectation of her wealth at the end of the investment period.       
+	\end{itemize}
+	
+	The variance of $W_{t+1}^{*}$ becomes:
+	\begin{align*}
+		V_{t}(W_{t+1}^{*}) = V_{t}[W_t(1 + r_{f,t+1}) + W_t[\frac{1}{a}\frac{(E_{t}[r_{t+1}]-r_{f, t+1})}{\sigma_r^{2}}(r_{t,t+1}-r_{f, t+1})]]
+	\end{align*} \vspace{-1em}
+	
+	By observing that: i) $W_t$, ii) $r_{f,t+1}$ and iii) $E_{t}[r_{t+1}]$ are determined in t and recalling that $V(ax + b) = a^2V(x)$ $\forall$ a,b constant, we derive: \vspace{-0.5em}
+	
+	\begin{equation} %\label{Variance Wealth}
+		V_{t}(W_{t+1}^{*}) = (W_t^2)[\frac{1}{(W_t^2a^2)}\frac{(E_{t}[r_{t+1}]-r_{f, t+1})^2}{\sigma_r^4}\sigma_r^2] \\
+		=\frac{1}{a^2}\frac{(E_{t}[r_{t+1}]-r_{f, t+1}]^2}{\sigma_r^2}
+	\end{equation}
+	
+	The variance of the optimal wealth corresponds to the squared sharpe ratio of the risky asset standardized by the quadrate of the absolute risk aversion of the investor.
+	
+	\subsection{Compute the welfare of the investor}
+	
+	Following the observation that the expectation of the exponential of a normally distributed random variable corresponds to the exponential of the mean plus half of the variance and grouping the argument of the exponential by the absolute risk aversion of the investor, $a$, we find that: \vspace{-1em}
+	
+	\begin{align*}
+		E_t[U_{t}(W_{t+1}^{*})] &= E_t[-e^{(-aW_t) [1 + r_{f,t+1} + \theta_t(E_{t}[r_{t+1}]-r_{f, t+1})] - bESG_t - \frac{1}{2}a^2W_t^2\theta_t^2\sigma_r^2}] \\
+		&= E_t[-e^{-a [W_t(1 + r_{f,t+1}) + W_t(\theta_t^*(E_{t}[r_{t+1}]-r_{f, t+1})) + \frac{b}{a}ESG_t - \frac{1}{2}aW_t^2(\theta_t^{*})^2\sigma_r^2]}]
+	\end{align*}
+	
+	The argument of the exponential within square brackets represents the certainty equivalent ($CE$) of the random wealth $W_{t+1}^{*}$: \vspace{-1em}
+	
+	\begin{align*}
+		CE^* &= [W_t(1 + r_{f,t+1}) + W_t(\theta_t^*(E_{t}[r_{t+1}]-r_{f, t+1})) + \frac{b}{a}(ESG_t) - \frac{1}{2}(a^2W_t^2(\theta_t^{*})^2\sigma_r^2)] \\
+		&= [W_t(1 + r_{f,t+1}) + \frac{1}{a}\frac{(E_{t}[r_{t+1}]-r_{f, t+1})^2}{\sigma_r^2} + \frac{b}{a}(ESG_t) - \frac{1}{2a}\frac{(E_{t}[r_{t+1}]-r_{f, t+1})^2}{\sigma_r^2}]
+	\end{align*} \vspace{-1em}
+	= 
+	Simplying the terms and substituting for $\theta_t^{*}$, the expression becomes: \vspace{-0.5em}
+	
+	\begin{align}
+		CE^* = [W_t(1 + r_{f,t+1}) + \frac{1}{2a}\frac{(E_{t}[r_{t+1}]-r_{f, t+1})^2}{\sigma_r^2} + \frac{b}{a}(ESG_t)] 
+	\end{align}
+	
+	\subsection{What is the distribution of the optimal wealth ? Comment}
+	
+	We can observe that the distribution of $W_{t+1}^{*}$ is normal with mean and variance as per \ref{Optimal Wealth}. Indeed, from the equation below, we see that $W_{t+1}^{*}$ is a linear combination of a normal random variable ($r_{t,t+1}$)\footnote {The Reader should note that $\theta_t^*$ is entirely determined in t}.
+	\begin{align}
+		W_{t+1}^{*} = (W_t) \left[1 + r_{f,t+1} + \theta_t^*(r_{t,t+1}-r_{f, t+1}) \right]
+	\end{align}
+	
+	\subsection{Comment on the impact of preference for ESG on the optiman portfolio?}
+	
+	The impact of preference for ESG is expressed in the utility function as a component of the argument of the exponential: $bESG_t$. 
+	Assuming the investor has a preference for ESG-tilted securities, the term $b$ will be $> 0$ and can be interpreted as the non-monetary benefit arising from holding the risky asset in opposition to the risk-free rate which is neutral to the ESG profile of the overall portfolio \footnote {Vice versa: $b < 0 $ in case of a penalty for ESG-friendly choises or in case of a non ESG-friendly stock with a negative ESG impact. These instances weren't considered as rather counterintuitive}. Therefore, it follows that $b$ emerges as an absolute risk aversion coefficient to the ESG factor.
+	In this case, there are a few interesting observations: 
+	
+	\begin{itemize}
+		\item The impact for ESG preferences is just a mere (positive) scaling factor of the utility function and affects all investors in the same way. Indeed, we demonstrated at \ref{Optimal weight} that each investor, regardless of her preferences, will have positive holdings of the risky asset and therefore, will capture the benefit from haing exposure to a favourably ESG-rated company. Additionally, it is also worth noting that $ESG_t$ is known at the beginning of the period  henceforth it doesn't impact the solution of the optimization problem.   
+		\item The fact that all investors share the same benefit derives from noting that $ESG_t$ only captures the ESG rating of the risky asset without being modulated for the actual wealth invested.
+		\item By considering the ESG rating of the asset, we can also notice that the argument of the utility function is not anymore just the wealth of the investor but it is a mixture of money and ESG rating. It follows that the investor will need to focus on the relative price of these two terms $b/a$, with the ESG component becoming more and more significant as $b$ grows. 
+	\end{itemize}
+	
+	\section{Exercise 2}
+	The 2-period, single asset utility maximization program is formulated as
+	\begin{align*}
+		\max_{c_t, c_{t+1}} \quad & U(c_t, c_{t+1}) = u(c_t) + \delta u(c_{t+1}) \\
+		\textrm{s.t.} \quad & c_t = y_t - \lambda,\\
+		\quad & c_{t+1} = y_{t+1} + \lambda (1+R)\\
+	\end{align*}
+	
+	%	&= \frac{c_t^{1-\gamma}}{1-\gamma} + \delta \frac{c_{t+1}^{1-\gamma}}{1-\gamma}, s.t. c_t + \frac{c_{t+1}}{1+R} = y_t + \frac{y_{t+1}}{1+R}
+	
+	Formulating the Lagrangian and FOCs for $c_t$ and $c_{t+1}$ yields
+	\begin{align*}
+		L &= u(c_t) + \delta u(c_{t+1}) - \phi \left(c_t + \frac{c_{t+1}}{1+R} - y_t - \frac{y_{t+1}}{1+R}\right)\\
+		\frac{\partial L}{\partial c_t} &= u_{c_t}' - \phi = 0\\
+		\frac{\partial L}{\partial c_{t+1}} &= \delta u_{c_{t+1}}' - \phi \frac{1}{1+R}= 0
+	\end{align*}
+	
+	The inter-temporal marginal rate of substitution (IMRS) describes the rate at which an agent is willing to trade current for future consumption while maintaining the same level of utility. The inter-temporal elasticity of substitution (IES) is a measure of responsiveness of the growth rate of consumption to the real interest rate. As real interest increase less risk-averse investors will save more by reducing current consumption (substitution effect). At the same time, future income is more heavily discounted resulting in lower total endowment (income effect). The IES describes the resulting net effects.
+	
+	The FOC yield the inter-temporal marginal rate of substitution (IMRS):
+	\begin{align*}
+		\frac{\delta u_{c_{t+1}}'}{u_{c_t}'} &= \frac{1}{1+R}\\
+		\delta \left( \frac{c_{t+1}}{c_t} \right)^{-\gamma} &= \frac{1}{1+R}\\
+		\text{IMRS} &= (1+R)^{-1}
+	\end{align*}
+	The agent would at time t at most forego and amount equal to $(1+R)^{-1}$ and invest it in the risky asset to earn the risky return at time t+1 of $1 = \frac{1}{1+R}(1+R)$. 
+	
+	The inter-temporal elasticity of substitution (IES) is derived directly from the IMRS:
+	\begin{align*}
+		\frac{c_{t+1}}{c_t} &= \delta^{\frac{1}{\gamma}}(1+R)^{\frac{1}{\gamma}}\\
+		\ln \left(\frac{c_{t+1}}{c_t}\right) &= \frac{1}{\gamma} \ln \delta + \frac{1}{\gamma} \ln (1+R)\\
+		\text{IES} &= \frac{\partial \ln (\frac{c_{t+1}}{c_t})}{\partial\ln (1+R)} = \frac{1}{\gamma}
+	\end{align*}
+	
+	\subsection{What will be the optimal portfolio and how sensitive it is relative to $\gamma$?}
+	
+	
+	
+	Given known endowment $w_0 = y_t + \frac{y_{t+1}}{1+R}$, known return on the risky asset R and consequently the maximum achievable utility $\bar{U}$, the optimal portfolio is determined by the IMRS (5), whereby the agent would at most forego current consumption in the amount of the IMRS in order invest this amount, earn R and consume an additional unit in the future.  The optimal portfolio and therefore the ratio of future consumption to current consumption is sensitiv to $\gamma$
+	\begin{align*}
+		\left(\frac{c_{t+1}}{c_t}\right)^\gamma &= \delta (1+R)\\
+		\gamma \ln \left(\frac{c_{t+1}}{c_t}\right) &= \ln \delta + \ln (1+R)\\
+		\ln \left(\frac{c_{t+1}}{c_t}\right) &= \frac{1}{\gamma} \ln \delta + \frac{1}{\gamma} \ln (1+R)\\
+		\frac{\partial \ln \left(\frac{c_{t+1}}{c_t}\right)}{\partial \frac{1}{\gamma}} &= \ln \delta + \ln (1+R)\\
+	\end{align*}
+	A \comment{decrease in risk aversion}{interesting question: what is the direction of causality? do agents reduce risk aversion, when they observe higher returns or do returns increase when agents happen to have lower risk aversion?} $\gamma$, i.e. an increase of $\frac{1}{\gamma}$ increases the preference for future consumption by a percentage equal to the sum personal time preference $\delta$ and return on the risky asset R. The less risk averse agent accepts to reduce current consumption and invests more in the risky asset. 
+	
+	\subsection{Rewrite the utility function in a recursive way using a CES aggregator. What will then be the optimal portfolio and how sensitive it is relative to $\gamma$ and the IES ?}
+	The original utility function is turned into a CES aggregator using:
+	\begin{align*}
+		U(c_t, c_{t+1}) &= \frac{1}{1-\gamma} \left[c_t^{1-1/\rho} + \delta c_{t+1}^{1-1/\rho}\right]^{\frac{1-\gamma}{1-1/\rho}}\\
+		u_{c_t}' &= \frac{\partial u}{\partial c_t} = \frac{1}{1-1\rho}\left[c_t^{1-1/\rho} + \delta c_{t+1}^{1-1/\rho}\right]^{\frac{1-\gamma}{1-1/\rho} - \frac{1-1/\rho}{1-1/\rho}} (1-1/\rho)c_t^{-1/\rho}\\
+		&= \left[c_t^{1-1/\rho} + \delta c_{t+1}^{1-1/\rho}\right]^{\frac{-\gamma + 1/\rho}{1-1/\rho}} c_t^{-1/\rho}\\
+		u_{c_{t+1}}' &= \frac{\partial u}{\partial c_{t+1}} = \frac{1}{1-1\rho}\left[c_t^{1-1/\rho} + \delta c_{t+1}^{1-1/\rho}\right]^{\frac{1-\gamma}{1-1/\rho} - \frac{1-1/\rho}{1-1/\rho}} \delta (1-1/\rho)c_{t+1}^{-1/\rho}\\
+		&= \left[c_t^{1-1/\rho} + \delta c_{t+1}^{1-1/\rho}\right]^{\frac{-\gamma + 1/\rho}{1-1/\rho}} \delta c_{t+1}^{-1/\rho}\\
+		IMRS &: \left( \frac{u_{c_{t+1}}'}{u_{c_t}'} \right) = \delta \left(\frac{c_{t+1}}{c_t}\right)^{-1/\rho}\\
+		\ln (1+R) &= -\ln IMRS = \ln \delta -\frac{1}{\rho} \ln \left(\frac{c_{t+1}}{c_t}\right)\\
+		\rho \ln IMRS &= -\rho \ln \delta + \ln \left(\frac{c_{t+1}}{c_t}\right)\\
+		IES &: \frac{\partial \ln \left(\frac{c_{t+1}}{c_t}\right)}{\partial \ln IMRS} = \rho\\
+	\end{align*}
+	The optimal portfolio and sensitivity to $\gamma$ is preserved given $\gamma = \frac{1}{\rho}$.
+	
+	%\section{Annex 1}
 \end{document}
