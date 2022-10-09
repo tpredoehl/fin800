@@ -268,20 +268,7 @@
 	\subsection{What will be the optimal portfolio and how sensitive it is relative to $\gamma$?}
 	The optimal portfolio is determined by the agents choice of $c_t$. Given that $\delta$, $\gamma$, the endowment $w_0 = y_t + \frac{y_{t+1}}{1+R} = c_t + \frac{c_{t+1}}{1+R}$ and R are known and certain at time t, a choice of $c_t$ implies a choice of $c_{t+1}$ and thereby the ratio $\frac{c_{t+1}}{c_t}$. The optimal portfolio choice then will be such that $$\frac{c_{t+1}}{c_t} = \delta^{\frac{1}{\gamma}}(1+R)^{\frac{1}{\gamma}}$$
 	
-	While the sensitivity to changes in the interest rate is given by the IES $= \frac{1}{\gamma}$
-	
-	
-	\begin{align*}
-		\delta \left(\frac{y_{t+1} + \lambda(1+R)}{y_t - \lambda}\right)^{-\gamma} &= (1+R)^{-1}\\
-		\left(\frac{y_{t+1} + \lambda(1+R)}{y_t - \lambda}\right) &= \delta^{\frac{1}{\gamma}}(1+R)^{\frac{1}{\gamma}}\\
-		y_{t+1} + \lambda(1+R) &= \delta^{\frac{1}{\gamma}}(1+R)^{\frac{1}{\gamma}} (y_t - \lambda)\\
-		\frac{y_{t+1}}{(1+R)} + \lambda &= \delta^{\frac{1}{\gamma}}(1+R)^{\frac{1-\gamma}{\gamma}} y_t - \delta^{\frac{1}{\gamma}}(1+R)^{\frac{1-\gamma}{\gamma}} \lambda\\
-		\lambda  + \delta^{\frac{1}{\gamma}}(1+R)^{\frac{1-\gamma}{\gamma}} \lambda&= \delta^{\frac{1}{\gamma}}(1+R)^{\frac{1-\gamma}{\gamma}} y_t - \frac{y_{t+1}}{(1+R)}\\
-		\lambda  &= \frac{\delta^{\frac{1}{\gamma}}(1+R)^{\frac{1-\gamma}{\gamma}} y_t - \frac{y_{t+1}}{(1+R)}}{1 + \delta^{\frac{1}{\gamma}}(1+R)^{\frac{1-\gamma}{\gamma}}}\\
-		\lambda  &= \frac{\delta^{\frac{1}{\gamma}}(1+R)^{\frac{1}{\gamma}} y_t - y_{t+1}}{(1+R) + \delta^{\frac{1}{\gamma}}(1+R)^{\frac{1}{\gamma}}}\\
-	\end{align*}
-	
-	The optimal portfolio $\lambda$ is sensitive to changes in the ratio $\frac{c_{t+1}}{c_t} = \delta^{\frac{1}{\gamma}} (1+R)^{\frac{1}{\gamma}}$ and this ratio is sensitive to changes in $\gamma$\footnote{I fail to produce the direct $\frac{\partial \lambda}{\partial \gamma}$ \alert{Any ideas?}}. 
+	While the sensitivity of the optimal portfolio choice to changes in the interest rate is given by the IES $= \frac{1}{\gamma}$, the sensitivity to changes in risk-aversion $\gamma$ is given by
 	\begin{align*}
 		\left(\frac{c_{t+1}}{c_t}\right)^\gamma &= \delta (1+R)\\
 		\gamma \ln \left(\frac{c_{t+1}}{c_t}\right) &= \ln \delta + \ln (1+R)\\
