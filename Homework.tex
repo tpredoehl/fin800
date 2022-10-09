@@ -68,7 +68,7 @@
 		\max_{(\theta_t)} E_t[U_{t}(W_{t+1})] &= E_t[-e^{(-aW_t) [1 + r_f + \theta_t(r_{t+1}-r_f)] - bESG_t}] \\
 	\end{align*}\vspace{-3.65em}
 
-	\replacedTP{Additionally, as $r_{t+1}$ is normally distributed, we can observe that the argument of the exponential function is a linear combination of a random variable normally distributed. Hence, considering that the expectation of the exponential of a normal corresponds to the exponential of the random variable's mean plus half of the variance, it follows that the optimization problem can be rewritten as: \vspace{-3em}\\}{The exponential is normally distributed given $r_{t+1}$ is normally distributed. Since the expectation of a normal exponential equals the exponential of its mean plus one half of its variance:}\vspace{-3em}
+	\replacedTP{Additionally, as $r_{t+1}$ is normally distributed, we can observe that the argument of the exponential function is a linear combination of a random variable normally distributed. Hence, considering that the expectation of the exponential of a normal corresponds to the exponential of the random variable's mean plus half of the variance, it follows that the optimization problem can be rewritten as:}{The exponential is normally distributed given $r_{t+1}$ is normally distributed. Since the expectation of a normal exponential equals the exponential of its mean plus one half of its variance:}\vspace{-3em}
 	
 	\begin{align*}
 		\max_{(\theta_t)} E_t[U_{t}(W_{t+1})] &= -e^{(-aW_t) [1 + r_f + \theta_t(E_{t}[r_{t+1}]-r_f)] - bESG_t + \frac{1}{2}a^2W_t^2\theta_t^2\sigma_r^2} \\
