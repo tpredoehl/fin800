@@ -279,7 +279,7 @@
 	\subsection{Rewrite the utility function in a recursive way using a CES aggregator. What will then be the optimal portfolio and how sensitive it is relative to $\gamma$ and the IES ?}
 	The original utility function is turned into a CES aggregator using:
 	\begin{align*}
-		U(c_t, c_{t+1}) &= \frac{1}{1-\gamma} \left[c_t^{1-\frac{1}{\rho}} + \delta c_{t+1}^{1-\frac{1}{\rho}}\right]^{\frac{1-\gamma}{1-1/\rho}}\\
+		U(c_t, c_{t+1}) &= \frac{1}{1-\gamma} \left[c_t^{1-\frac{1}{\rho}} + \delta c_{t+1}^{1-\frac{1}{\rho}}\right]^{\frac{1-\gamma}{1-\frac{1}{\rho}}}\\
 		u_{c_t}' &= \frac{\partial u}{\partial c_t} = \frac{1}{1-1\rho}\left[c_t^{1-1/\rho} + \delta c_{t+1}^{1-1/\rho}\right]^{\frac{1-\gamma}{1-1/\rho} - \frac{1-1/\rho}{1-1/\rho}} (1-1/\rho)c_t^{-1/\rho}\\
 		&= \left[c_t^{1-1/\rho} + \delta c_{t+1}^{1-1/\rho}\right]^{\frac{-\gamma + 1/\rho}{1-1/\rho}} c_t^{-1/\rho}\\
 		u_{c_{t+1}}' &= \frac{\partial u}{\partial c_{t+1}} = \frac{1}{1-1\rho}\left[c_t^{1-1/\rho} + \delta c_{t+1}^{1-1/\rho}\right]^{\frac{1-\gamma}{1-1/\rho} - \frac{1-1/\rho}{1-1/\rho}} \delta (1-1/\rho)c_{t+1}^{-1/\rho}\\
