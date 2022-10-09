@@ -237,9 +237,13 @@
 		\quad & c_{t+1} = y_{t+1} + \lambda (1+R)\\
 	\end{align*}
 	
-	At time t the agent can choose to invest an amount $\lambda$ into a risk-less asset which yields the return R with certainty. In absence of uncertainty this choice reduces to an all-or-nothing decision, depending on the 
+	The budget constraint can be reformulated as
+	\begin{align*}
+		\lambda &= y_t - c_t = \frac{c_{t+1} - y_{t+1}}{1+R}\\
+	\end{align*}
 	
-	Formulating the Lagrangian and FOCs for $c_t$ and $c_{t+1}$ yields
+	
+	At time t the agent can choose to invest an amount $\lambda$ into a risk-less asset which yields the known return R. Formulating the Lagrangian and FOCs with respect to $c_t$ and $c_{t+1}$ yields
 	\begin{align*}
 		L &= u(c_t) + \delta u(c_{t+1}) - \phi \left(c_t + \frac{c_{t+1}}{1+R} - y_t - \frac{y_{t+1}}{1+R}\right)\\
 		\frac{\partial L}{\partial c_t} &= u_{c_t}' - \phi = 0\\
