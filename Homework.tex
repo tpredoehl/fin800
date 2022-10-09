@@ -147,7 +147,6 @@
 	\end{align} \vspace{-2.5em}
 	
 	\subsection{What is the distribution of the optimal wealth ? Comment}
-	
 	We can observe that the distribution of $W_{t+1}^{*}$ is normal with mean and variance as per \ref{Optimal Wealth}. Indeed, from the equation below, we see that $W_{t+1}^{*}$ is a linear combination of a normal random variable ($r_{t,t+1}$)\footnote {$\theta_t^*$ is entirely determined in t.}.
 	\begin{align}
 		W_{t+1}^{*} = (W_t) \left[1 + r_{f,t+1} + \theta_t^*(r_{t,t+1}-r_{f, t+1}) \right]
@@ -177,7 +176,6 @@
 	\end{itemize}
 	
 	\subsubsection{Optimal portfolio choice}
-	
 	Following the original setup of 1.2, we can see now that the argument of the exponential is still a normal random variable. Indeed, such variable is represented as a linear combination of two normals: $W_{t+1}$\footnote{$W_{t+1}$ itself is a linear combination of the normal: $r_{t,t+1}$.} and $ESG_t$. Henceforth we have: 
 	\begin{align*}
 		\max_{(\theta_t)} E_t[U_{t}(W_{t+1})] &= E_t[-e^{(-aW_t) [1 + r_{f,t+1} + \theta_t(r_{t,t+1}-r_{f, t+1})] - bESG_t}] \\
@@ -194,8 +192,8 @@
 	\end{align*} \vspace{-1.75em}
 	
 	It follows that there is no difference from the optimal solution, $\theta_{t}^*$, shown in 1.2. 
-	As a consequence of the above result, we can infere that the mean, the variance and the distribution of the optimal wealth will be unchanged.
-	
+	\subsubsection{Mean and variance of optimal wealth}
+	As a consequence of the above result, we can infer that the mean, the variance and the distribution of the optimal wealth will be unchanged.
 	\subsubsection{Welfare of the investor}
 	
 	By grouping for $a$ all the terms of the argument of the exponential in the utility function we find that:
@@ -213,7 +211,7 @@
 		CE^* = [W_t(1 + r_{f,t+1}) + \frac{1}{2a}Sharpe^2 + \frac{b}{a}\mu_{ESG} -\frac{b^2}{2a}\sigma_{ESG}^2]
 	\end{align} \vspace{-0.5em}
 	The main observation on \ref{New CE} is that the stochasticity of the ESG factor negatively impacts the certainty equivalent of the investor. Indeed, differently from the non-randomic case, the ESG score of the risky asset is not known in t.\\ Although the risky asset offers on average a favourable ESG exposure\footnote{This is represented by $\frac{b}{a}\mu_{ESG}$ in the CE expression.}, the investor discounts a reduction in the non-monetary benefit perceived in the case that volatility plays adversely.  
-	
+	\subsubsection{Distribution of optimal wealth}
 	\subsubsection{Impact of preference for ESG on optimal portfolio}
 	
 	As the ESG factor does not correlate with $r_{t,t+1}$ and it is indifferent from the amount of wealth actually invested in the risky asset, we observed that there is no change from the optimal solution previously found in 1.2. \\ However, the volatility of the factor impacts negatively the CE of the investor transforming the ESG component from $\frac{b}{a}\mu_{ESG}$ to: \vspace{-1.5em}
