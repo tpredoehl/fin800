@@ -239,22 +239,9 @@
 	\subsubsection{Distribution of optimal wealth}
 		Given that the optimal portfolio (\ref{Optimal weight}) is not altered by the inclusion of a random ESG factor, the mean of $W_{t+1}^{*}$ remains:
 	\begin{align*}
-		E_{t}[W_{t+1}^{*}] = E_{t}[(W_t)(1 + r_f)] + E_{t}[\frac{1}{a}\frac{E_{t}[r_{t+1}]-r_f}{\sigma_r^2}(r_{t+1}-r_f)]
-	\end{align*} \vspace{-1.25em}
-	
-	\replacedTP{	By noting that: i) $W_t$ and ii) $r_f$ are known in t and the expectation (conditional to t) of the expected return of the risky asset corresponds to the expected return itself by the law of iterated expectations, we can find that:   }{Given $E_t[W_t]=W_t$, $r_f=\text{const.}$ and $E_t[E_t[r_{t+1}]] = E_t[r_{t+1}]$ by LIE:} 
-	\begin{align} \label{Mean Wealth}
-		E_{t}[W_{t+1}^{*}] &= W_t(1 + r_f) + \frac{1}{a}\frac{(E_{t}[r_{t+1}]-r_f)^2}{\sigma_r^2} \notag\\
-		&= W_t(1 + r_f) + \frac{1}{a}Sharpe^2 \\ \notag
-	\end{align} \vspace{-3.25em}  
-	
-	\replacedTP{A few o}{O}bservations on (\ref{Mean Wealth}):
-	\begin{itemize}
-		\item The expected wealth in t+1 \replacedTP{corresponds to}{is floored at} the investable wealth in t capitalized at the risk free rate plus \addedTP{a risky bet equal to }the square of the sharpe ratio of the asset divided by the absolute risk aversion of the investor.
-		\item The lower the absolute risk aversion and the higher the expected wealth of the investor is. This result arises from the consideration that the investor will tilt her portfolio to the risky asset clipping a positive reward for the risk borne hence, improving the expectation of her wealth at the end of the investment period.       
-	\end{itemize}
-	
-	The variance of $W_{t+1}^{*}$ \replacedTP{becomes}{is}: \vspace{-0.5em}
+		E_{t}[W_{t+1}^{*}] = W_t(1 + r_f) + \frac{1}{a}Sharpe^2 \\
+	\end{align*}
+	and the variance of $W_{t+1}^{*}$ remains:
 	\begin{align*}
 		V_{t}(W_{t+1}^{*}) = V_{t}[W_t(1 + r_f) + W_t[\frac{1}{a}\frac{(E_{t}[r_{t+1}]-r_f)}{\sigma_r^{2}}(r_{t+1}-r_f)]]
 	\end{align*} \vspace{-1.75em}
