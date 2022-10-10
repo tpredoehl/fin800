@@ -200,7 +200,7 @@
 		\item Although the ESG rating is ordinal in nature and might be expressed as an alphanumeric metric, in this case the assumption of normality implies that $ESG_t$ covers the interval: $(-\infty,+\infty )$.
 	\end{itemize}
 	\subsubsection{Optimal portfolio choice}
-	Following the original setup of 1.2, \replacedTP{we can see now that the argument of the exponential is still a normal random variable. Indeed, such variable is represented as a linear combination of two normals: $W_{t+1}$\footnote{$W_{t+1}$ itself is a linear combination of the normal: $r_{t+1}$.} and $ESG_t$. Henceforth we have: }{the revised maximization program is an affine transformation of two normal random variables, $W_{t+1}$ and $ESG_t$. As before, the expectation of a normal exponential equals the mean plus one half of the variance of the exponential:}
+	Following the original setup of 1.2, \replacedTP{we can see now that the argument of the exponential is still a normal random variable. Indeed, such variable is represented as a linear combination of two normals: $W_{t+1}$\footnote{$W_{t+1}$ itself is a linear combination of the normal: $r_{t+1}$.} and $ESG_t$. Henceforth we have: }{the revised maximization program is an affine transformation of two normal random variables, $W_{t+1}$\footnote{$W_{t+1}$ itself is an  of the normal: $r_{t+1}$.} and $ESG_t$}
 	\begin{align*}
 		\max_{(\theta_t)} E_t[U_{t}(W_{t+1})] &= E_t[-e^{(-aW_t) [1 + r_f + \theta_t(r_{t+1}-r_f)] - bESG_t}] \\
 		&= -e^{(-aW_t) [1 + r_f + \theta_t(r_{t+1}-r_f)] - b\mu_{ESG} +\frac{1}{2}a^2W_t^2\theta_t^2\sigma_r^2 + \frac{1}{2}b^2\sigma_{ESG}^2}]
