@@ -237,6 +237,45 @@
 	\replacedTP{The main observation on is that the stochasticity of the ESG factor negatively impacts the certainty equivalent of the investor. Indeed, differently from the non-randomic case, the ESG score of the risky asset is not known in t. Although the risky asset offers on average a favourable ESG exposure , the investor discounts a reduction in the non-monetary benefit perceived in the case that volatility plays adversely.} {The addition of the random non-monetary ESG effect would contribute to expected utility of future wealth for as long as $bESG_t > b^2 \sigma_{ESG}^2$.}
 	
 	\subsubsection{Distribution of optimal wealth}
+		Given (\ref{Optimal weight}), we can rewrite the optimal \addedTP{wealth} $W_{t+1}^{*}$ as: \vspace{-2.5em}\\
+	
+	\begin{align*}
+		W_{t+1}^{*} &= (W_t) \left[1 + r_f + \theta_t^*(r_{t+1}-r_f) \right]\\
+		&= (W_t) \left[1 + r_f + \frac{1}{(aW_t)}\frac{(E_{t}[r_{t+1}]-r_f)}{\sigma_r^2}(r_{t+1}-r_f) \right]\\
+		&= (W_t)(1 + r_f) + \frac{1}{a}\frac{(E_{t}[r_{t+1}]-r_f)}{\sigma_r^2}(r_{t+1}-r_f)
+	\end{align*} \vspace{-1.35em}
+	
+	The mean of $W_{t+1}^{*}$ becomes:
+	\begin{align*}
+		E_{t}[W_{t+1}^{*}] = E_{t}[(W_t)(1 + r_f)] + E_{t}[\frac{1}{a}\frac{E_{t}[r_{t+1}]-r_f}{\sigma_r^2}(r_{t+1}-r_f)]
+	\end{align*} \vspace{-1.25em}
+	
+	\replacedTP{	By noting that: i) $W_t$ and ii) $r_f$ are known in t and the expectation (conditional to t) of the expected return of the risky asset corresponds to the expected return itself by the law of iterated expectations, we can find that:   }{Given $E_t[W_t]=W_t$, $r_f=\text{const.}$ and $E_t[E_t[r_{t+1}]] = E_t[r_{t+1}]$ by LIE:} 
+	\begin{align} \label{Mean Wealth}
+		E_{t}[W_{t+1}^{*}] &= W_t(1 + r_f) + \frac{1}{a}\frac{(E_{t}[r_{t+1}]-r_f)^2}{\sigma_r^2} \notag\\
+		&= W_t(1 + r_f) + \frac{1}{a}Sharpe^2 \\ \notag
+	\end{align} \vspace{-3.25em}  
+	
+	\replacedTP{A few o}{O}bservations on (\ref{Mean Wealth}):
+	\begin{itemize}
+		\item The expected wealth in t+1 \replacedTP{corresponds to}{is floored at} the investable wealth in t capitalized at the risk free rate plus \addedTP{a risky bet equal to }the square of the sharpe ratio of the asset divided by the absolute risk aversion of the investor.
+		\item The lower the absolute risk aversion and the higher the expected wealth of the investor is. This result arises from the consideration that the investor will tilt her portfolio to the risky asset clipping a positive reward for the risk borne hence, improving the expectation of her wealth at the end of the investment period.       
+	\end{itemize}
+	
+	The variance of $W_{t+1}^{*}$ \replacedTP{becomes}{is}: \vspace{-0.5em}
+	\begin{align*}
+		V_{t}(W_{t+1}^{*}) = V_{t}[W_t(1 + r_f) + W_t[\frac{1}{a}\frac{(E_{t}[r_{t+1}]-r_f)}{\sigma_r^{2}}(r_{t+1}-r_f)]]
+	\end{align*} \vspace{-1.75em}
+	
+	\replacedTP{By observing that: i) $W_t$, ii) $r_f$ and iii) $E_{t}[r_{t+1}]$ are determined in t and r}{R}ecalling that $V(ax + b) = a^2V(x)$ $\forall$ a,b constant, we derive: \vspace{-1.25em}
+	
+	\begin{align} %\label{Variance Wealth}
+		V_{t}(W_{t+1}^{*}) &= (W_t^2)[\frac{1}{(W_t^2a^2)}\frac{(E_{t}[r_{t+1}]-r_f)^2}{\sigma_r^4}\sigma_r^2] \notag \\
+		&=\frac{1}{a^2}\frac{(E_{t}[r_{t+1}]-r_f]^2}{\sigma_r^2} \notag\\
+		&= \frac{1}{a^2}Sharpe^2 \\	\notag
+	\end{align}  \vspace{-3em}
+	
+	The variance of the optimal wealth corresponds to the squared sharpe ratio of the risky asset standardized by the quadrate of the absolute risk aversion of the investor. \addedTP{Given $\frac{\partial V_t (W_{t+1}^*)}{\partial a} < 0$ directly implies that less risk-averse investors tolerate less variance in expected future wealth.}
 	\subsubsection{Impact of preference for ESG on optimal portfolio}
 	
 	As the ESG factor does not correlate with $r_{t+1}$ and it is indifferent from the amount of wealth actually invested in the risky asset, we observed that there is no change from the optimal solution previously found in 1.2. \\ However, the volatility of the factor impacts negatively the CE of the investor transforming the ESG component from $\frac{b}{a}\mu_{ESG}$ to: \vspace{-1.5em}
