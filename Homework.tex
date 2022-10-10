@@ -237,15 +237,7 @@
 	\replacedTP{The main observation on is that the stochasticity of the ESG factor negatively impacts the certainty equivalent of the investor. Indeed, differently from the non-randomic case, the ESG score of the risky asset is not known in t. Although the risky asset offers on average a favourable ESG exposure , the investor discounts a reduction in the non-monetary benefit perceived in the case that volatility plays adversely.} {The addition of the random non-monetary ESG effect would contribute to expected utility of future wealth for as long as $bESG_t > b^2 \sigma_{ESG}^2$.}
 	
 	\subsubsection{Distribution of optimal wealth}
-		Given (\ref{Optimal weight}), we can rewrite the optimal \addedTP{wealth} $W_{t+1}^{*}$ as: \vspace{-2.5em}\\
-	
-	\begin{align*}
-		W_{t+1}^{*} &= (W_t) \left[1 + r_f + \theta_t^*(r_{t+1}-r_f) \right]\\
-		&= (W_t) \left[1 + r_f + \frac{1}{(aW_t)}\frac{(E_{t}[r_{t+1}]-r_f)}{\sigma_r^2}(r_{t+1}-r_f) \right]\\
-		&= (W_t)(1 + r_f) + \frac{1}{a}\frac{(E_{t}[r_{t+1}]-r_f)}{\sigma_r^2}(r_{t+1}-r_f)
-	\end{align*} \vspace{-1.35em}
-	
-	The mean of $W_{t+1}^{*}$ becomes:
+		Given that the optimal portfolio (\ref{Optimal weight}) is not altered by the inclusion of a random ESG factor, the mean of $W_{t+1}^{*}$ remains:
 	\begin{align*}
 		E_{t}[W_{t+1}^{*}] = E_{t}[(W_t)(1 + r_f)] + E_{t}[\frac{1}{a}\frac{E_{t}[r_{t+1}]-r_f}{\sigma_r^2}(r_{t+1}-r_f)]
 	\end{align*} \vspace{-1.25em}
