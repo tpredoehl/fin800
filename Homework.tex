@@ -192,7 +192,6 @@
 	
 	\subsection{Assumption of ESG rating stochasticity}
 	Assuming: i) $ESG_t \sim N(\mu_{ESG},\sigma_{ESG})$ and that ii) $\rho(ESG_t,\eta_{r, t+1}) = 0 $ due to independence, we can observe that:
-	
 	\begin{itemize}
 		\item There are now two stochastic terms in the utility function of the investor: $ESG_t$ and $r_{t+1}$ (the latter embedded in $W_{t+1}$).\\ Therefore, the mean and the variance of the argument: $(-aW_t) [1 + r_f + \theta_t(r_{t+1}-r_f)] - bESG_t$ are
 		\subitem Mean: $(-aW_t) [1 + r_f + \theta_t(E[r_{t+1}]-r_f)] - b\mu_{ESG}$
@@ -200,7 +199,6 @@
 		\item As the impact of the preference for ESG does not depend on the actual amount of wealth invested in the asset and there is no correlation with $r_{t+1}$, we would expect such uncertainty to emerge as a non-hedgeable risk which will not impact the optimal portfolio choice\footnote {It is rather modelled as a switch variable such that the investor perceives the non-monetary benefit of investing in an ESG-friendly asset just by having exposure to it regardless of how exposed the portfolio is. As a next step, it would be interesting to model: i) the dependence of $bESG_t$ on $\theta$ and ii) the absence of independence between $\eta_{r, t+1}$ and $ESG_t$.}.
 		\item Although the ESG rating is ordinal in nature and might be expressed as an alphanumeric metric, in this case the assumption of normality implies that $ESG_t$ covers the interval: $(-\infty,+\infty )$.
 	\end{itemize}
-	
 	\subsubsection{Optimal portfolio choice}
 	Following the original setup of 1.2, we can see now that the argument of the exponential is still a normal random variable. Indeed, such variable is represented as a linear combination of two normals: $W_{t+1}$\footnote{$W_{t+1}$ itself is a linear combination of the normal: $r_{t+1}$.} and $ESG_t$. Henceforth we have: 
 	\begin{align*}
@@ -215,11 +213,11 @@
 	The FOC becomes:
 	\begin{align*}
 		0 = (-aW_t)(E_{t}[r_{t+1}]-r_f)) + (a^2W_t^2\theta_t\sigma_r^2)
-	\end{align*} \vspace{-1.75em}
+	\end{align*}
 	
 	It follows that there is no difference from the optimal solution, $\theta_{t}^*$, shown in 1.2. 
 	\subsubsection{Mean and variance of optimal wealth}
-	As a consequence of the above result, we can infer that the mean, the variance and the distribution of the optimal wealth will be unchanged.
+	As a consequence of the above result, we can infer that the mean, the variance and the distribution of the optimal wealth will be unchanged.\todo{separated out}
 	\subsubsection{Welfare of the investor}
 	
 	By grouping for $a$ all the terms of the argument of the exponential in the utility function we find that:
